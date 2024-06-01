@@ -5,14 +5,14 @@ services:
     image: ${DOCKER_REGISTRY-}containeraization
     container_name: containeraization_webapi
     build:
-      context: .\Containeraization
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Containeraization\Dockerfile
   sqlserver:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: containeraization_sqlserver
     environment:
-      - ACCEPT_EULA= 'Y'
-      - MSSQL_SA_PASSWORD= '1StrongPwd!!'
-      - MSSQL_TCP_PORT= 1433
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=L@veneverd1es
+      - MSSQL_TCP_PORT=1433
     ports:
       - 1437:1433
