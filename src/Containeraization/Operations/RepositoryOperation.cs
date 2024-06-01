@@ -9,8 +9,7 @@ namespace Operations
     {
        IEmployeeOperations employeeOperations { get; }
        ICompanyOperations companyOperations { get; }
-
-        void Save();
+       void Save();
     }
     public class RepositoryOperation : IRepositoryOperation, IDisposable
     {

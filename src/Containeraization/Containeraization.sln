@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryContext", "RepositoryContext\RepositoryContext.csproj", "{5B095E5C-02F5-478C-9BE4-D7B8BDCC6016}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operations", "Operations\Operations.csproj", "{3DAC3EDE-0142-4D67-9180-FA25FF8BF7FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Operations", "Operations\Operations.csproj", "{3DAC3EDE-0142-4D67-9180-FA25FF8BF7FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{747618C5-4734-4F0B-8582-27A1ECF4E84C}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4223B4DA-6298-4D5C-A43F-DB8322D76C19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{3DAC3EDE-0142-4D67-9180-FA25FF8BF7FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DAC3EDE-0142-4D67-9180-FA25FF8BF7FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DAC3EDE-0142-4D67-9180-FA25FF8BF7FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{747618C5-4734-4F0B-8582-27A1ECF4E84C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747618C5-4734-4F0B-8582-27A1ECF4E84C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747618C5-4734-4F0B-8582-27A1ECF4E84C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747618C5-4734-4F0B-8582-27A1ECF4E84C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4223B4DA-6298-4D5C-A43F-DB8322D76C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4223B4DA-6298-4D5C-A43F-DB8322D76C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4223B4DA-6298-4D5C-A43F-DB8322D76C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4223B4DA-6298-4D5C-A43F-DB8322D76C19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

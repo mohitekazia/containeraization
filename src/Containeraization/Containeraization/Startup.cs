@@ -6,7 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Operations;
 using RepositoryContext;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +33,10 @@ namespace Containeraization
             services.AddDbContext<DataContext>(s=> {
                 s.UseSqlServer(Configuration.GetSection("ConnectionStrings:DockerDbConnectionString").Value);
             });
+            services.AddScoped<IRepositoryOperation, RepositoryOperation>();
+            services.AddScoped<ICompanyService,CompanyService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
