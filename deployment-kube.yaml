@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-system
+  namespace: kube-system
+  labels:
+    app: kube-system
+spec:
+  selector:
+    matchLabels:
+      k8s-app: kube-dns
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      namespace: kube-system
+      labels:
+        k8s-app: kube-dns
+    spec:
+      containers:
+        - name: containeraization-webapi
+          imagePullPolicy: Always
+          image: 583086777388.dkr.ecr.us-east-1.amazonaws.com/containeraization:latest
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+                memory: 2G
+            requests:
+                cpu: "1"
+                memory: 2G
+                    
+        - name: containeraization-sqlserver
+          imagePullPolicy: Always
+          image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+          ports:
+            - containerPort: 1433
+          env:
+          - name: MSSQL_PID
+            value: "Developer"
+          - name: ACCEPT_EULA
+            value: "Y"
+          - name: MSSQL_SA_PASSWORD
+            valueFrom:
+                secretKeyRef:
+                  name: mssql-secret
+                  key: SA_PASSWORD
+          resources:
+            limits:
+                memory: 2G
+            requests:
+                cpu: "1"
+                memory: 2G
+        

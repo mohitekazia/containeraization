@@ -29,13 +29,13 @@ namespace Containeraization
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.Configure<DataBaseConnection>(Configuration.GetSection("ConnectionStrings:DockerDbConnectionString"));
             services.AddDbContext<DataContext>(s=> {
-                s.UseSqlServer(Configuration.GetSection("ConnectionStrings:DockerDbConnectionString").Value);
+                s.UseSqlServer(Configuration.GetSection("DatabaseConnString").Value);
             });
             services.AddScoped<IRepositoryOperation, RepositoryOperation>();
             services.AddScoped<ICompanyService,CompanyService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IHealthCheck, HealthCheckService>();
 
         }
 

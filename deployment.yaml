@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: containeraization
+  namespace: containeraization
+  labels:
+    app: containeraization
+spec:
+  selector:
+    matchLabels:
+      app: containeraization
+  revisionHistoryLimit: 10
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      namespace: kube-system
+      labels:
+        app: containeraization
+    spec:
+      containers:
+        - name: nginx
+          imagePullPolicy: Always
+          image: nginx
+          ports:
+            - containerPort: 80
+              protocol: TCP

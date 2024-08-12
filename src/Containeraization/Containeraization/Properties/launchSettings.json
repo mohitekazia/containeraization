@@ -22,6 +22,7 @@
       "launchBrowser": true,
       "launchUrl": "api/companies",
       "environmentVariables": {
+        "DatabaseConnString": "server=127.0.0.1,1438; database=CompanyEmployee; Integrated Security=false;User Id=sa;password=L@veneverd1es",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:5000"
