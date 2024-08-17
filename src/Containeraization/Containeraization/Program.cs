@@ -17,9 +17,13 @@ namespace Containeraization
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            using(var scope= host.Services.CreateScope())
+
+            using (var scope = host.Services.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+                var confi=scope.ServiceProvider.GetService<IConfiguration>();
+                Console.WriteLine(confi.GetSection("ConnectionStrings:DockerDbConnectionString").Value);
+                Console.WriteLine(db.Database.CanConnect());
                 db.Database.Migrate();
             }
             host.Run();
@@ -29,6 +33,13 @@ namespace Containeraization
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.ConfigureAppConfiguration((s,c) => {
+                        c.AddJsonFile("appsettings.json")
+                         .AddJsonFile($"appsettings.{s.HostingEnvironment.EnvironmentName}.json", optional: false, reloadOnChange: true)
+                         .AddJsonFile($"secrets/appsettings.secrets.json", optional: true, reloadOnChange: true)
+                         .AddEnvironmentVariables()
+                         .Build();
+                    });
                     webBuilder.UseStartup<Startup>();
                 });
     }

@@ -30,7 +30,7 @@ namespace Containeraization
         {
             services.AddControllers();
             services.AddDbContext<DataContext>(s=> {
-                s.UseSqlServer(Configuration.GetSection("DatabaseConnString").Value);
+                s.UseSqlServer(Configuration.GetSection("ConnectionStrings:DockerDbConnectionString").Value);
             });
             services.AddScoped<IRepositoryOperation, RepositoryOperation>();
             services.AddScoped<ICompanyService,CompanyService>();

@@ -1,5 +1,5 @@
 version: '3.4'
-
+name: test3
 services:
   containeraization:
     image: ${DOCKER_REGISTRY-}containeraization
@@ -7,12 +7,19 @@ services:
     build:
       context: .
       dockerfile: Containeraization\Dockerfile
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: containeraization_sqlserver
-    environment:
-      - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=L@veneverd1es
-      - MSSQL_TCP_PORT=1433
+    networks:
+      - backend
     ports:
-      - 1437:1433
+      - 8080:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    
+
+
+networks:
+  backend:
+    name: backend
+    external: true
+  
+
+  
