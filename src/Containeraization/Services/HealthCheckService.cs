@@ -25,7 +25,7 @@ namespace Services
         
         public string GetConnectionString()
         {
-            return this._configuration.GetSection("DatabaseConnString").Value;
+            return this._configuration.GetSection("ConnectionStrings:DockerDbConnectionString").Value;
         }
 
         

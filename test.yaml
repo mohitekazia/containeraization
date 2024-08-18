@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  SA_PASSWORD: TEB2ZW5ldmVyZDFlcw==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: dbconn

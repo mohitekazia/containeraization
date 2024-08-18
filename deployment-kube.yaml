@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      k8s-app: kube-dns
+      k8s-app: webapi
   replicas: 1
   strategy:
     type: RollingUpdate
@@ -16,12 +16,12 @@ spec:
     metadata:
       namespace: kube-system
       labels:
-        k8s-app: kube-dns
+        k8s-app: webapi
     spec:
       containers:
         - name: containeraization-webapi
           imagePullPolicy: Always
-          image: 583086777388.dkr.ecr.us-east-1.amazonaws.com/containeraization:latest
+          image: 339713068874.dkr.ecr.us-east-1.amazonaws.com/containeraization:v3
           ports:
             - containerPort: 80
           resources:
@@ -30,6 +30,10 @@ spec:
             requests:
                 cpu: "1"
                 memory: 2G
+          volumeMounts:
+            - name: secrets
+              mountPath: /app/secrets
+              readOnly: true
                     
         - name: containeraization-sqlserver
           imagePullPolicy: Always
@@ -52,4 +56,9 @@ spec:
             requests:
                 cpu: "1"
                 memory: 2G
+         
+      volumes:
+        - name: secrets
+          secret:
+               secretName: secret-appsettings
         
