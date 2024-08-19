@@ -21,7 +21,7 @@ spec:
       containers:
         - name: containeraization-webapi
           imagePullPolicy: Always
-          image: 339713068874.dkr.ecr.us-east-1.amazonaws.com/containeraization:v3
+          image: 058264537146.dkr.ecr.us-east-1.amazonaws.com/containeraization:v1
           ports:
             - containerPort: 80
           resources:
