@@ -1,3 +1,4 @@
 kubectl get pods -n kube-system
 kubectl describe pods asasa -n kube-system
 kubectl exec -i -t kube-system-748c54665b-nwhc7 -n kube-system --container containeraization-webapi -- /bin/bash
+docker compose -f docker.yml up --build --force-recreate

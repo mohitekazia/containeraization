@@ -1,5 +1,5 @@
 version: '3.4'
-name: test3
+name: webenv
 services:
   containeraization:
     image: ${DOCKER_REGISTRY-}containeraization
@@ -9,10 +9,22 @@ services:
       dockerfile: Containeraization\Dockerfile
     networks:
       - backend
+      - frontend
     ports:
       - 8080:80
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+ 
+  web:
+    image: ${DOCKER_REGISTRY-}web
+    container_name: containeraization_web
+    build:
+      context: .
+      dockerfile: client\Dockerfile
+    networks:
+      - frontend
+    ports:
+      - 4201:4000
     
 
 
@@ -20,6 +32,9 @@ networks:
   backend:
     name: backend
     external: true
+  frontend:
+    name: frontend
+    driver: bridge
   
 
   
