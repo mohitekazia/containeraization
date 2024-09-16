@@ -19,12 +19,16 @@ services:
     image: ${DOCKER_REGISTRY-}web
     container_name: containeraization_web
     build:
-      context: .
-      dockerfile: client\Dockerfile
+      context: ./client
+      dockerfile: Dockerfile
     networks:
       - frontend
     ports:
-      - 4201:4000
+      - 4201:4200
+    volumes: 
+      - "/app/node_modules"
+      - ".:/app"
+    tty: true
     
 
 
