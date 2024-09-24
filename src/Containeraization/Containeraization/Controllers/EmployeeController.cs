@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Containeraization
 {
-    [Route("api/employees")]
+    [Route("api/employee")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
@@ -15,6 +15,18 @@ namespace Containeraization
         public EmployeeController()
         {
 
-        } 
+        }
+
+        [HttpPost]
+        [Route("save")]
+        public IActionResult Save()
+        {
+            return StatusCode(500, "");
+        }
+    }
+
+    public class Content
+    {
+        public string Value { get; set; }
     }
 }

@@ -30,6 +30,7 @@
               "src/styles.css"
             ],
             "scripts": []
+            
           },
           "configurations": {
             "production": {
@@ -62,10 +63,14 @@
               "buildTarget": "client:build:production"
             },
             "development": {
-              "buildTarget": "client:build:development"
+              "buildTarget": "client:build:development",
+              "proxyConfig": "src/proxy.conf.json"
+              
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          
+          
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"

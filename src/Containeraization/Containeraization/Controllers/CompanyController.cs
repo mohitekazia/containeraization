@@ -18,7 +18,7 @@ namespace Containeraization.Controllers
             this._companyService = companyService;
         }
 
-        [HttpGet]
+        [HttpGet]                                
         public IActionResult GetAllCompanies()
         {
             try
