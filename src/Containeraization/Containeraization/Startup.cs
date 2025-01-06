@@ -36,7 +36,14 @@ namespace Containeraization
             services.AddScoped<ICompanyService,CompanyService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IHealthCheck, HealthCheckService>();
-            services.AddCors();
+            
+            services.AddCors(options=> {
+
+                options.AddPolicy("AllowPolicy", policy => { policy.AllowAnyHeader().WithOrigins("http://localhost:4200").AllowAnyMethod(); });
+            
+            });
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,17 +55,16 @@ namespace Containeraization
             }
 
             app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseCors("AllowPolicy");
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireCors("AllowPolicy");
             });
+
             
-            app.UseCors(
-                    options => options.WithOrigins("http://localhost:4200").AllowAnyMethod()
-            );
+            app.UseMvc();
 
         }
     }

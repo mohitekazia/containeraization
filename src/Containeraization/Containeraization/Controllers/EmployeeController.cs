@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,9 @@ namespace Containeraization
 
         [HttpPost]
         [Route("save")]
-        public IActionResult Save()
+        public IActionResult Post(Content content)
         {
-            return StatusCode(500, "");
+            return StatusCode(200, "asas");
         }
     }
 

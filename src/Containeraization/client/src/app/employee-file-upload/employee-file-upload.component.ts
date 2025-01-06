@@ -31,18 +31,23 @@ export class EmployeeFileUploadComponent {
 
   onUpload() {
     if (this.file) {
-      const headers = new HttpHeaders()
-        .set('content-type', 'application/json')
-        /*.set('Access-Control-Allow-Origin', 'http://localhost:4200')*/
-        .set('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT')
-        .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization,Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-      
 
       const formData = new FormData();
 
       formData.append('file', this.file, this.file.name);
 
-      const upload$ = this.http.post("http://localhost:4200//api//employees//save", formData);
+      const body = JSON.stringify({ value: "asasas" })
+
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
+      //const upload$ = this.http.post("http://localhost:8080/api/employee/save", formData);
+
+     const upload$ = this.http.post("http://localhost:8080/api/employee/save", body,httpOptions)
+
+      //const upload$ = this.http.get("api//companies//getallcompanies")
 
       this.status = 'uploading';
 

@@ -23,8 +23,9 @@
       "launchUrl": "api/companies",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
+       
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:8080"
     },
     "Docker": {
       "commandName": "Docker",
@@ -39,7 +40,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production"
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:8080"
     }
   }
 }
