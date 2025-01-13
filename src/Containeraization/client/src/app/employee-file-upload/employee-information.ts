@@ -3,7 +3,7 @@ export class EmployeeInformation {
   EmpId: number;
   EmpCompanyId: number;
 
-  constructor(empName: string, empId: number, empCompanyId: number) {
+  constructor(empName?: any, empId?: any, empCompanyId?: any) {
     this.EmpName = empName;
     this.EmpId = empId;
     this.EmpCompanyId = empCompanyId;

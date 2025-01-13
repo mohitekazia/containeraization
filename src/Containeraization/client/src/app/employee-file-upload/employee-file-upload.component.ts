@@ -14,11 +14,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class EmployeeFileUploadComponent {
 
-  constructor(public employeeInformation: EmployeeInformation) {
+  //constructor(public employeeInformation: EmployeeInformation) {
     
-  }
+  //}
 
-  submitForm(data:EmployeeInformation) {
+  submitForm(data:any) {
     console.log(data.EmpName)
   }
 

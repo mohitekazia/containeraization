@@ -6,5 +6,5 @@ import { routes } from './app.routes';
 import { EmployeeInformation } from './employee-file-upload/employee-information';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(),EmployeeInformation]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient()]
 };
