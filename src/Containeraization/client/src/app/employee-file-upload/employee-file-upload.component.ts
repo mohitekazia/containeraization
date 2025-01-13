@@ -4,6 +4,7 @@ import { throwError } from 'rxjs'
 import { CommonModule } from '@angular/common';
 import { EmployeeInformation } from './employee-information';
 import { FormsModule } from '@angular/forms';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-employee-file-upload',
@@ -13,10 +14,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './employee-file-upload.component.css'
 })
 export class EmployeeFileUploadComponent {
-
-  //constructor(public employeeInformation: EmployeeInformation) {
+  constructor( private http:HttpClient) {
     
-  //}
+  }
 
   submitForm(data:any) {
     console.log(data.EmpName)
