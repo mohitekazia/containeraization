@@ -32,6 +32,7 @@ namespace Containeraization
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
+                
                 {
                     webBuilder.ConfigureAppConfiguration((s,c) => {
                         c.AddJsonFile("appsettings.json")

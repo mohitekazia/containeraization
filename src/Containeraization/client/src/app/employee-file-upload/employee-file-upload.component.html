@@ -1,6 +1,34 @@
 <h2>Single File Upload</h2>
 
-<input type="file" class="file-input" (change)="onChange($event)"  #fileUpload />
+<div class="container">
+  <h2 class="heading">Template Driven Form</h2>
+  <form #userForm="ngForm" (ngSubmit)="submitForm(userForm.value)">
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="employeeInformation.EmpName">
+    </div>
+
+    <div class="form-group">
+      <label for="id">Id</label>
+      <input type="text" class="form-control" id="id" name="id" [(ngModel)]="employeeInformation.EmpId">
+    </div>
+    <div class="form-group">
+      <label for="companyid">CompanyId</label>
+      <input type="text" class="form-control" id="companyid" name="companyid" [(ngModel)]="employeeInformation.EmpCompanyId">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+<!--<input type="file" class="file-input" (change)="onChange($event)" #fileUpload />
 
 <div *ngIf="file">
   <section class="file-info">
@@ -14,5 +42,5 @@
 
   <button (click)="onUpload()">Upload the file</button>
 
- 
-</div>
+
+</div>-->
