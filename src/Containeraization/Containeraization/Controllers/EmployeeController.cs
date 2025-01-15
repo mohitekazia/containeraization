@@ -41,6 +41,23 @@ namespace Containeraization
 
             }
 
+
+
+        }
+
+        [HttpGet]
+        [Route("getemployees")]
+        public IActionResult GetAllEmployees()
+        {
+            try
+            {
+                var companies = this._employeeService.GetAllEmployees();
+                return Ok(companies);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "");
+            }
         }
     }
 

@@ -9,6 +9,8 @@ namespace Services
     {
         void Create(Employee employee);
         Employee Get(int id);
+
+        IEnumerable<Employee> GetAllEmployees();
     }
     public class EmployeeService : IEmployeeService
     {
@@ -39,6 +41,11 @@ namespace Services
             {
                 throw ex;
             }
+        }
+
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return this._repositoryOperation.employeeOperations.GetAll();
         }
     }
 }

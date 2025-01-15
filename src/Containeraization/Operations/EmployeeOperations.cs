@@ -11,6 +11,7 @@ namespace Operations
     {
         void Create(Employee entity);
         Employee GetEmployee(int id);
+        IEnumerable<Employee> GetAll();
     }
     public class EmployeeOperations : RepositoryContext<Employee>,IEmployeeOperations
     {

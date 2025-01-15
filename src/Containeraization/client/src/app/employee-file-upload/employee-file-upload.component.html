@@ -1,7 +1,27 @@
-<h2>Single File Upload</h2>
+<h2>This shows CORS action</h2>
+
+
+
 
 <div class="container">
-  <h2 class="heading">Template Driven Form</h2>
+  <h2 class="heading">Current Employees data</h2>
+
+
+  <table style="border: 1px solid;">
+    <thead style="color:green">
+    <td>Employee Id</td>
+    <td>Employee Name</td>
+    <td>Employee Company ID</td>
+    </thead>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.EmpName}}</td>
+      <td>{{employee.EmpId}}</td>
+      <td>{{employee.EmpCompanyId}}</td>
+    </tr>
+  </table>
+
+  <h2 class="heading">Employee data submission</h2>
+
   <form #userForm="ngForm" (ngSubmit)="submitForm(userForm.value)">
 
     <div class="form-group">
