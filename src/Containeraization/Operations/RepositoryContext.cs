@@ -9,7 +9,8 @@ namespace Operations
     public interface IRepository<T>
     {
         void Create(T entity);
-        IQueryable<T> Get(int id); 
+        IQueryable<T> GetAll();
+        T Get(int id);
     }
     public class RepositoryContext<T> : IRepository<T> where T : class
     {
@@ -22,11 +23,12 @@ namespace Operations
         public void Create(T entity)
         {
             this._dataContext.Set<T>().Add(entity);
+            this._dataContext.SaveChanges();
         }
 
-        public IQueryable<T> Get(int id)
+        public T Get(int id)
         {
-            return this._dataContext.Set<T>();
+            return this._dataContext.Set<T>().Find(id);
         }
 
         public IQueryable<T> GetAll()

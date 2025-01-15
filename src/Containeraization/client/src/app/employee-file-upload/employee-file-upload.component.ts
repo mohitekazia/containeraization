@@ -17,9 +17,20 @@ export class EmployeeFileUploadComponent {
   constructor( private http:HttpClient) {
     
   }
-
+  status: "initial" | "uploading" | "success" | "fail" = "initial";
   submitForm(data:any) {
     console.log(data.EmpName)
+
+    const upload$ = this.http.post("http://localhost:8080/api/employee/save", data);
+      upload$.subscribe({
+        next: () => {
+          this.status = 'success';
+        },
+        error: (error: any) => {
+          this.status = 'fail';
+          return throwError(() => error);
+        },
+      });
   }
 
 

@@ -10,12 +10,22 @@ namespace Operations
     public interface IEmployeeOperations
     {
         void Create(Employee entity);
-        IQueryable<Employee> Get(int id);
+        Employee GetEmployee(int id);
     }
     public class EmployeeOperations : RepositoryContext<Employee>,IEmployeeOperations
     {
         public EmployeeOperations(DataContext dataContext) : base(dataContext)
         {
+        }
+
+        public IEnumerable<Employee> GetAll()
+        {
+            return base.GetAll();
+        }
+
+        public Employee GetEmployee(int id)
+        {
+            return base.GetAll().FirstOrDefault(s => s.Id == id);
         }
     }
 }

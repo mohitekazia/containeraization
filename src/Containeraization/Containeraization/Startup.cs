@@ -39,7 +39,7 @@ namespace Containeraization
             
             services.AddCors(options=> {
 
-                options.AddPolicy("AllowPolicy", policy => { policy.AllowAnyHeader().WithOrigins("http://localhost:4200").AllowAnyMethod(); });
+                options.AddPolicy("AllowPolicy", policy => { policy.AllowAnyHeader().WithOrigins("http://localhost:4200", "http://localhost:4201").AllowAnyMethod(); });
             
             });
             services.AddMvc(options => options.EnableEndpointRouting = false);

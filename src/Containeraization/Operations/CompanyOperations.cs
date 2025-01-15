@@ -10,6 +10,7 @@ namespace Operations
     public interface ICompanyOperations
     {
         IEnumerable<Company> GetAll();
+        Company GetCompany(int id);
 
     }
     public class CompanyOperations : RepositoryContext<Company>,ICompanyOperations
@@ -21,6 +22,11 @@ namespace Operations
         public IEnumerable<Company> GetAll()
         {
             return base.GetAll();
+        }
+
+        public Company GetCompany(int id)
+        {
+            return base.GetAll().FirstOrDefault(s => s.Id == id);
         }
     }
 }

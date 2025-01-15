@@ -8,7 +8,7 @@ namespace Services
     public interface IEmployeeService
     {
         void Create(Employee employee);
-        IEnumerable<Employee> Get(int id);
+        Employee Get(int id);
     }
     public class EmployeeService : IEmployeeService
     {
@@ -29,11 +29,11 @@ namespace Services
             }
         }
 
-        public IEnumerable<Employee> Get(int id)
+        public Employee Get(int id)
         {
             try
             {
-               return this._repositoryOperation.employeeOperations.Get(id);
+               return this._repositoryOperation.employeeOperations.GetEmployee(id);
             }
             catch (Exception ex)
             {

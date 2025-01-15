@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Entities;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +14,40 @@ namespace Containeraization
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+        private readonly IEmployeeService _employeeService;
+        private readonly ICompanyService _companyService;
 
-        public EmployeeController()
+        public EmployeeController(IEmployeeService employeeService, ICompanyService companyService)
         {
-
+            this._employeeService = employeeService;
+            this._companyService = companyService;
         }
 
         [HttpPost]
         [Route("save")]
-        public IActionResult Post(Content content)
+        public IActionResult Post(EmployeeInformation employeeInformation)
         {
-            return StatusCode(200, "asas");
+            try
+            {
+                var employee = new Employee();
+                employee.Name = employeeInformation.Name;
+                employee.Company = this._companyService.Get(Convert.ToInt32(employeeInformation.CompanyId));
+                this._employeeService.Create(employee);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+
         }
     }
 
-    public class Content
+    public class EmployeeInformation
     {
-        public string Value { get; set; }
+        public string Name { get; set; }
+        public string Id { get; set; }
+        public string CompanyId { get; set; }
     }
 }
