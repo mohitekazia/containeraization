@@ -6,7 +6,7 @@ services:
     container_name: containeraization_webapi
     build:
       context: .
-      dockerfile: Containeraization\Dockerfile
+      dockerfile: Dockerfile
     networks:
       - backend
       - frontend
